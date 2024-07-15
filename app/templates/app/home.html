@@ -54,7 +54,7 @@
                 >
                   Thêm vào giỏ hàng
                 </button>
-                <a class="btn btn-outline-success" href="#">Xem</a>
+                <a class="btn btn-outline-success" href="{% url "detail" %}?id={{product.id}}">Xem</a>
                 <h5 style="display: inline-block; float: right">
                     <strong>
                         {{product.price | floatformat:2}}đ

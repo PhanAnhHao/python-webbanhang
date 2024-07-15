@@ -48,7 +48,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Liên hệ hỗ trợ</a>
+          <a class="nav-link" href="{% url "contact" %}">Liên hệ hỗ trợ</a>
         </li>
       </ul>
       <form class="d-flex" role="search" method="POST" action="{%url 'search'%}">
@@ -112,6 +112,14 @@
         <!--Start: category-->
             {% block category %}{% endblock category %}
         <!--End: category--> 
+
+        <!--Start: detail-->
+            {% block detail %}{% endblock detail %}
+        <!--End: detail--> 
+
+        <!--Start: contact-->
+            {% block contact %}{% endblock contact %}
+        <!--End: contact--> 
         <!--End: Mainbody-->
 
 

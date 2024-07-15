@@ -1,0 +1,47 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% block contact %}
+<div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="images p-3">
+                            <div class="text-center p-4"> <img id="main-image" src="{%static 'app/images/messi-vodich-copa2024.jpeg'%}" width="450" /> </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product p-4">
+                            <div class="mt-4 mb-3">
+                                <h5 class="text-uppercase">Group 6</h5>
+                            </div>
+                            <p class="about">
+                                <a style="text-decoration: none" href="#">Phan Anh Hào</a><br>
+                                <a style="text-decoration: none" href="#">Nguyễn Hạ Long</a><br>
+                                <a style="text-decoration: none" href="#">Trần Duy Hưng </a><br>
+                                <a style="text-decoration: none" href="#">Nguyễn Tiến Mạnh</a><br>
+                                <a style="text-decoration: none" href="#">Hoàng Quốc Lâm Sung</a>
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        {% endblock contact %}
+    </body>
+</html>

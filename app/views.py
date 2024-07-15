@@ -8,6 +8,65 @@ from django.contrib import messages
 
 # Create your views here.
 
+def contact(req):
+    if req.user.is_authenticated:
+        customer = req.user
+        order, created = Order.objects.get_or_create(customer = customer, complete = False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+        user_not_login = "hidden"
+        user_login = "show"
+    else:
+        items = []
+        order = {
+            'get_cart_items': 0, 
+            'get_cart_total': 0
+            }
+        cartItems = order['get_cart_items']
+        user_not_login = "show"
+        user_login = "hidden"
+    categories = Category.objects.filter(is_sub = False)
+    context = {
+        'items': items, 
+        'order': order, 
+        'cartItems': cartItems,
+        'user_not_login': user_not_login,
+        'user_login': user_login,
+        'categories': categories
+        }
+    return render(req, 'app/contact.html', context)
+
+def detail(req):
+    if req.user.is_authenticated:
+        customer = req.user
+        order, created = Order.objects.get_or_create(customer = customer, complete = False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+        user_not_login = "hidden"
+        user_login = "show"
+    else:
+        items = []
+        order = {
+            'get_cart_items': 0, 
+            'get_cart_total': 0
+            }
+        cartItems = order['get_cart_items']
+        user_not_login = "show"
+        user_login = "hidden"
+    id = req.GET.get('id', '')
+    products = Product.objects.filter(id=id)
+    categories = Category.objects.filter(is_sub = False)
+    context = {
+        'items': items, 
+        'order': order, 
+        'cartItems': cartItems,
+        'user_not_login': user_not_login,
+        'user_login': user_login,
+        'categories': categories,
+        'products': products
+        }
+    return render(req, 'app/detail.html', context)
+
 def category(req):
     if req.user.is_authenticated:
         customer = req.user
