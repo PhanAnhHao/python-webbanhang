@@ -1,0 +1,68 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block banner_slider %}
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="10000">
+      <img src="{%static 'app/images/banner/real-champions-league-16_QQMV.jpg'%}" class="d-block w-100" alt="Áo đấu Real Madrid" height="650px">
+      <div class="carousel-caption d-none d-md-block bg-body text-dark fs-4">
+        <h5>Áo đấu Real Madrid</h5>
+        <p>Áo đấu Real Madrid vô dịch UCL.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="{%static 'app/images/banner/doi-dau-bo-dao-nha-tho-nhi-ky.jpg'%}" class="d-block w-100" alt="Áo thi đấu Bồ Đào Nha" height="650px">
+      <div class="carousel-caption d-none d-md-block bg-body text-dark fs-4">
+        <h5>Áo thi đấu Bồ Đào Nha</h5>
+        <p>Áo thi đấu Bồ Đào Nha tham dự Euro 2024.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{%static 'app/images/banner/Duc2-01.jpg'%}" class="d-block w-100" alt="Áo thi đấu Đức" height="650px">
+      <div class="carousel-caption d-none d-md-block bg-body text-dark fs-4">
+        <h5>Áo thi đấu Đức</h5>
+        <p>Áo thi đấu Đức tham dự Euro 2024.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev font-weight-bold" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Trước</span>
+  </button>
+  <button class="carousel-control-next font-weight-bold" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Sau</span>
+  </button>
+</div>
+{% endblock banner_slider %}
+{% block main-content %}
+    <div class="row" style="width:100%">
+      {%for product in products%}
+        <div class="col-lg-3">
+            <img class="thumbnail" src="{{ product.get_photo_url }}">
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong></h6>
+                <hr>
+                <button data-product={{product.id}} 
+                        data-action="add" 
+                        class="btn btn-outline-secondary add-btn update-cart"
+                >
+                  Thêm vào giỏ hàng
+                </button>
+                <a class="btn btn-outline-success" href="#">Xem</a>
+                <h5 style="display: inline-block; float: right">
+                    <strong>
+                        {{product.price | floatformat:2}}đ
+                    </strong>
+                </h5>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+    <br/><br/><br/>
+{% endblock main-content %}
